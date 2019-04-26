@@ -7,6 +7,7 @@ public class Character : MonoBehaviour
     public string Name;
     public GameObject Model;
     public Transform PosicionLaserCentral;
+    public Transform LugarExplosion;
 
     [Tooltip("Rango minimo del movimiento del player en X Y")]
     public Vector2 MinRange;                              //Rango minimo en XY del player sobre el mundo/local
@@ -23,6 +24,16 @@ public class Character : MonoBehaviour
     public float DistanciaRaycast = 100f;
     [Tooltip("Tiempo de espera entre disparos")]
     public float VelocidadFuego = 0.2f;
+    public int EscudoInicial = 100;
+    public float IntervaloParaConsumirEscudo = 1f;
+    public int EnergiaInicial = 100;
+    public float IntervaloParaConsumirEnergia = 1f;
+    public int GastoEnergiaPorTiempo = 1;
+
+    [SerializeField]
+    private int energiaActual;
+    [SerializeField]
+    private int escudoActual;
 
     private Animator PlayerAnimator;
     //======Animaciones del player
@@ -40,7 +51,8 @@ public class Character : MonoBehaviour
     }
     void Start()
     {
-        
+        escudoActual = EscudoInicial;
+        energiaActual = EnergiaInicial;
     }
 
     // Update is called once per frame
@@ -49,13 +61,36 @@ public class Character : MonoBehaviour
        
     }
 
-    public void PlayerAnimationInX(float value)
+
+    void DañoRecibido(int daño)
+    {
+        if(escudoActual - daño >= 0)
+        {
+            escudoActual -= daño;
+            GameManager.GameManagerInstance._UiManager.TxtShieldPlayer.text = ((int)escudoActual * 100 / EscudoInicial).ToString();
+        }
+        else
+        {
+
+        }
+    }
+
+    public void AnimacionEnX(float value)
     {
         PlayerAnimator.SetFloat(s_MovingHash, value);
     }
 
-    public void PlayerAnimationShot(bool b)
+    public void AnimacionDeDisparo(bool b)
     {
         PlayerAnimator.SetBool(s_ShotHash, b);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Asteroid"))
+        {
+            DañoRecibido(other.GetComponent<Asteroid>().ValorDaño);
+            GameManager.GameManagerInstance._ExplotionManager.ObtenerExplosionPlayer(LugarExplosion);
+        }
     }
 }

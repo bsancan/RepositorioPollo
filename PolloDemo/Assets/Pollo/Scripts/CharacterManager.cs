@@ -47,7 +47,7 @@ public class CharacterManager : MonoBehaviour
         // if there is no input on the left joystick
         if (_LeftJoystick.GetInputDirection() == Vector3.zero)
         {
-            _Character.PlayerAnimationInX(0f);
+            _Character.AnimacionEnX(0f);
 
         }else if (_LeftJoystick.GetInputDirection() != Vector3.zero)
         {
@@ -62,7 +62,7 @@ public class CharacterManager : MonoBehaviour
                 );
 
             transform.localPosition = velFixed;
-            _Character.PlayerAnimationInX(_LeftJoystick.GetInputDirection().x);
+            _Character.AnimacionEnX(_LeftJoystick.GetInputDirection().x);
 
 
             //aniPlayer.SetFloat(horizontalHash, xAxis, 0.1f, animationSpeed * Time.deltaTime);
@@ -97,7 +97,7 @@ public class CharacterManager : MonoBehaviour
                Screen.width / 2,
                Screen.height / 2,
                0f);
-            _Character.PlayerAnimationShot(false);
+            _Character.AnimacionDeDisparo(false);
         }
 
         //transformo el vector jposition en screen position
@@ -117,7 +117,7 @@ public class CharacterManager : MonoBehaviour
 
         if (_RightJoystick.GetInputDirection() != Vector3.zero)
         {
-            _Character.PlayerAnimationShot(true);
+            _Character.AnimacionDeDisparo(true);
 
             //disparo de ammo
             if (Time.time > nextFire)

@@ -11,6 +11,8 @@ public class Asteroid : MonoBehaviour
     };
 
     public Transform Modelo;
+    public Vector3 ReEscalaExplosion = Vector3.one;
+    public float TiempoVidaExplosion = 1.2f;
     public int ValorDaño = 20;
     public int ValorEscudo = 20;
     public float VelocidadDeFrente = 0f;
@@ -77,13 +79,13 @@ public class Asteroid : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerAmmo"))
         {
+            //aplico daño al asteroide
             TakeDamage(other.GetComponent<PlayerAmmo>().ValorDaño);
+
+        }else if (other.gameObject.CompareTag("Player"))
+        {
+            gameObject.SetActive(false);
         }
-        //else if (other.gameObject.CompareTag("Player"))
-        //{
-        //    gameObject.SetActive(false);
-        //    ExplosionManager.explosionManagerInstance.SpawnExplosion(transform.position);
-        //}
     }
 
     private void TakeDamage(int dañoRecibido)
@@ -102,7 +104,7 @@ public class Asteroid : MonoBehaviour
             {
                 gameObject.SetActive(false);
                 GameManager.GameManagerInstance._UiManager.MostrarPuntosDaño(dañoRecibido, transform.position);
-                //ExplosionManager.explosionManagerInstance.SpawnExplosion(transform.position, AsteroidModelScale);
+                GameManager.GameManagerInstance._ExplotionManager.ObtenerExplosion(transform, ReEscalaExplosion, TiempoVidaExplosion);
                 //cuento la destruccion como puntaje
                 //UIManager.uiManagerInstance.scoreManager.currentPlayerScore += valueDamage;
             }
