@@ -56,7 +56,6 @@ public class ExplotionManager : MonoBehaviour
         spawnedExplosion.gameObject.SetActive(true);
 
         ExplosionQueue.Enqueue(spawnedExplosion);
-        print(gameObject.name + " - " + ReEscalaTamaño + transform.localScale);
     }
 
     public void ObtenerExplosionPlayer(Transform pos)

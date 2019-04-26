@@ -28,6 +28,5 @@ public class ExplotionParticle : MonoBehaviour
     {
         TiempoVida = vida;
         TamañoInicial = escala;
-        print(gameObject.name + " - " + escala);
     }
 }
