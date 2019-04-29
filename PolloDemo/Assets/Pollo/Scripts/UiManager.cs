@@ -65,7 +65,7 @@ public class UiManager : MonoBehaviour
 
     }
 
-    public void MostrarPuntosDaño(int values, Vector3 pos)
+    public void MostrarPuntosNegativos(int values, Vector3 pos)
     {
         GameObject go = Instantiate(puntos, Vector3.zero, Quaternion.identity);
         go.transform.SetParent(rectCanvasPuntos.transform);
@@ -82,6 +82,24 @@ public class UiManager : MonoBehaviour
         //asigno los valores al texto
         go.GetComponent<Points>().StartAnimation("-" + values, ColorNegativePoints);
 
+    }
+
+    public void MostrarPuntosPositivos(int values, Vector3 pos)
+    {
+        GameObject go = Instantiate(puntos, Vector3.zero, Quaternion.identity);
+        go.transform.SetParent(rectCanvasPuntos.transform);
+        Vector2 viewPortPosA = CharacterManager.CharacterManagerInstance.PlayerCamera.WorldToViewportPoint(pos);
+
+        Vector2 screenPos = new Vector2(
+            ((viewPortPosA.x * rectCanvasPuntos.sizeDelta.x) - (rectCanvasPuntos.sizeDelta.x * 0.5f)),
+            ((viewPortPosA.y * rectCanvasPuntos.sizeDelta.y) - (rectCanvasPuntos.sizeDelta.y * 0.5f)));
+
+        go.GetComponent<RectTransform>().anchoredPosition = screenPos;
+        go.transform.localScale = Vector3.one;
+        go.SetActive(true);
+
+        //asigno los valores al texto
+        go.GetComponent<Points>().StartAnimation("-" + values, ColorPositivePoints);
     }
 
     public void SetCrossHairColor1()

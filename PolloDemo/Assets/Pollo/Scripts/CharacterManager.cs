@@ -33,12 +33,14 @@ public class CharacterManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         _LeftJoystick = GameManager.GameManagerInstance._UiManager.TouchController.leftJoystickBackgroundImage.GetComponent<LeftJoystick>();
         _RightJoystick = GameManager.GameManagerInstance._UiManager.TouchController.rightJoystickBackgroundImage.GetComponent<RightJoystick>();
 
         MovimientoCharEnXY();
 
         MovimientoCrossHair();
+
     }
 
     private void MovimientoCharEnXY()

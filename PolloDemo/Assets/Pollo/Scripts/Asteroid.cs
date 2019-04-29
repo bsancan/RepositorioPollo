@@ -94,7 +94,7 @@ public class Asteroid : MonoBehaviour
         if (sum > 0)
         {
             escudoActual = sum;
-            GameManager.GameManagerInstance._UiManager.MostrarPuntosDaño(dañoRecibido, transform.position);
+            GameManager.GameManagerInstance._UiManager.MostrarPuntosNegativos(dañoRecibido, transform.position);
 
             //print(currentStamina);
         }
@@ -103,7 +103,7 @@ public class Asteroid : MonoBehaviour
             if (gameObject.activeInHierarchy)
             {
                 gameObject.SetActive(false);
-                GameManager.GameManagerInstance._UiManager.MostrarPuntosDaño(dañoRecibido, transform.position);
+                GameManager.GameManagerInstance._UiManager.MostrarPuntosNegativos(dañoRecibido, transform.position);
                 GameManager.GameManagerInstance._ExplotionManager.ObtenerExplosion(transform, ReEscalaExplosion, TiempoVidaExplosion);
                 //cuento la destruccion como puntaje
                 //UIManager.uiManagerInstance.scoreManager.currentPlayerScore += valueDamage;

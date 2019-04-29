@@ -43,7 +43,9 @@ public class Item : MonoBehaviour
             }
             else
             {
-                gameObject.SetActive(false);
+                GameManager.GameManagerInstance._UiManager.MostrarPuntosPositivos(PuntosEnergia, transform.position);
+                Destroy(gameObject);
+                //gameObject.SetActive(false);
             }
         }
     }

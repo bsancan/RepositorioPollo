@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pollo_model_0003_Pollo_robot
+  m_Name: pollo_model_0003_Pollo_robot_normal
   m_Shader: {fileID: 4800000, guid: ab587ef05bd2a724cb41e345bf85b97a, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
