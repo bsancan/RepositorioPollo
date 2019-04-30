@@ -31,7 +31,7 @@ ModelImporter:
       name: meteoro_1
     second: {fileID: 2100000, guid: 594fd81194688db43b57da76f3811f50, type: 2}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 0
