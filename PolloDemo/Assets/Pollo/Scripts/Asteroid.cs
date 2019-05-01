@@ -82,9 +82,10 @@ public class Asteroid : MonoBehaviour
             //aplico daño al asteroide
             TakeDamage(other.GetComponent<PlayerAmmo>().ValorDaño);
 
-        }else if (other.gameObject.CompareTag("Player"))
+        }else if (other.gameObject.CompareTag("PlayerShield") || other.gameObject.CompareTag("Player"))
         {
             gameObject.SetActive(false);
+            GameManager.GameManagerInstance._ExplotionManager.ObtenerExplosion(transform, ReEscalaExplosion, TiempoVidaExplosion);
         }
     }
 

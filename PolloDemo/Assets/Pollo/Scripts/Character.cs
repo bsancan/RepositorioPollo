@@ -81,13 +81,14 @@ public class Character : MonoBehaviour
     }
 
 
-    void DañoRecibido(int daño)
+    public void DañoRecibido(int daño)
     {
+        GameManager.GameManagerInstance._ExplotionManager.ObtenerExplosionPlayer(LugarExplosion);
         if (!Golpeado)
         {
             if (escudoActual - daño >= 0)
             {
-                AnimacionDeDaño();
+                //AnimacionDeDaño();
                 escudoActual -= daño;
                 GameManager.GameManagerInstance._UiManager.TxtShieldPlayer.text = ((int)escudoActual * 100 / EscudoInicial).ToString();
             }
@@ -124,8 +125,8 @@ public class Character : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Asteroid"))
         {
-            DañoRecibido(other.GetComponent<Asteroid>().ValorDaño);
-            GameManager.GameManagerInstance._ExplotionManager.ObtenerExplosionPlayer(LugarExplosion);
+            //    DañoRecibido(other.GetComponent<Asteroid>().ValorDaño);
+            //    GameManager.GameManagerInstance._ExplotionManager.ObtenerExplosionPlayer(LugarExplosion);
         }
     }
 
