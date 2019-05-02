@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class EscudoEnergia : MonoBehaviour
 {
-    private Renderer render;
-    private IEnumerator ienMostrarEscudo;
+    
+    //private IEnumerator ienMostrarEscudo;
 
-    public bool EscudoVisible;
+    //public bool EscudoVisible;
     private void Awake()
     {
-        render = GetComponent<Renderer>();    
+        //render = GetComponent<Renderer>();    
     }
     void Start()
     {
-        ienMostrarEscudo = CorMuestraEscudo();
-        render.enabled = false;
+        //ienMostrarEscudo = CorMuestraEscudo();
+        //render.enabled = false;
     }
 
     void Update()
@@ -28,26 +28,26 @@ public class EscudoEnergia : MonoBehaviour
         if (other.gameObject.CompareTag("Asteroid"))
         {
             CharacterManager.CharacterManagerInstance._Character.DañoRecibido(other.GetComponent<Asteroid>().ValorDaño);
-            
-            IniciaEscudo(other.gameObject);
+            GetComponent<EscudoEnergiaEventos>().IniciaAnimacion();
+            //IniciaEscudo(other.gameObject);
         }
     }
 
-    void IniciaEscudo(GameObject other)
-    {
-        if (!EscudoVisible)
-        {
-            ienMostrarEscudo = CorMuestraEscudo();
-            StartCoroutine(ienMostrarEscudo);
-        }
-    }
+    //void IniciaEscudo(GameObject other)
+    //{
+    //    if (!EscudoVisible)
+    //    {
+    //        ienMostrarEscudo = CorMuestraEscudo();
+    //        StartCoroutine(ienMostrarEscudo);
+    //    }
+    //}
 
-    IEnumerator CorMuestraEscudo()
-    {
-        EscudoVisible = true;
-        render.enabled = true;
-        yield return new WaitForSeconds(1f);
-        EscudoVisible = false;
-        render.enabled = false;
-    }
+    //IEnumerator CorMuestraEscudo()
+    //{
+    //    EscudoVisible = true;
+    //    render.enabled = true;
+    //    yield return new WaitForSeconds(1f);
+    //    EscudoVisible = false;
+    //    render.enabled = false;
+    //}
 }

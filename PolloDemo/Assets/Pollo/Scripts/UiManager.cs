@@ -24,6 +24,8 @@ public class UiManager : MonoBehaviour
     [SerializeField]
     private RectTransform rectCanvasPuntos;
     [SerializeField]
+    private Text puntaje;
+    [SerializeField]
     private GameObject puntos;
     [SerializeField]
     private Color ColorNegativePoints;
@@ -37,7 +39,7 @@ public class UiManager : MonoBehaviour
     public Text TxtShieldPlayer;
 
     private Image imgCrossHair;
-
+    private int puntajeAcumulado = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -118,5 +120,11 @@ public class UiManager : MonoBehaviour
     {
         imgCrossHair.color = ColorCrossHair03;
 
+    }
+
+    public void IngresarPuntaje(int p)
+    {
+        puntajeAcumulado += p;
+        puntaje.text = puntajeAcumulado.ToString();
     }
 }

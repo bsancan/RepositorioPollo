@@ -96,7 +96,7 @@ public class Asteroid : MonoBehaviour
         {
             escudoActual = sum;
             GameManager.GameManagerInstance._UiManager.MostrarPuntosNegativos(dañoRecibido, transform.position);
-
+            
             //print(currentStamina);
         }
         else
@@ -111,6 +111,8 @@ public class Asteroid : MonoBehaviour
             }
             escudoActual = 0;
         }
+
+        GameManager.GameManagerInstance._UiManager.IngresarPuntaje(dañoRecibido);
 
     }
 }

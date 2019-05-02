@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public UiManager _UiManager;
     public ExplotionManager _ExplotionManager;
 
+    public int NivelActual;
+
     private void Awake()
     {
         if (GameManagerInstance == null)
@@ -24,11 +26,19 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        IniciarNivel();
     }
 
     void Update()
     {
         
+    }
+
+    public void IniciarNivel()
+    {
+        if(NivelActual == 1)
+        {
+            _UiManager.IngresarPuntaje(0);
+        }
     }
 }
