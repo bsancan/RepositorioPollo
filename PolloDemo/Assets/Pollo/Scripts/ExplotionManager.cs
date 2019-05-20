@@ -51,10 +51,14 @@ public class ExplotionManager : MonoBehaviour
     public void ObtenerExplosion(Transform asteroid, Vector3 ReEscalaTamaño, float TiempoVidaExplosion)
     {
         Transform spawnedExplosion = ExplosionQueue.Dequeue();
-        spawnedExplosion.GetComponent<ExplotionParticle>().ParametrosIniciales (ReEscalaTamaño + asteroid.localScale, TiempoVidaExplosion);
+        spawnedExplosion.GetComponent<ExplotionParticle>().ParametrosIniciales (ReEscalaTamaño.x * asteroid.localScale, TiempoVidaExplosion);
         spawnedExplosion.position = asteroid.position;
-        spawnedExplosion.gameObject.SetActive(true);
 
+        print(asteroid.name);
+        print(ReEscalaTamaño + asteroid.localScale);
+
+        spawnedExplosion.gameObject.SetActive(true);
+        
         ExplosionQueue.Enqueue(spawnedExplosion);
     }
 

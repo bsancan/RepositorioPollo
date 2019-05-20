@@ -44,6 +44,7 @@ public class Item : MonoBehaviour
             else
             {
                 GameManager.GameManagerInstance._UiManager.MostrarPuntosPositivos(PuntosEnergia, transform.position);
+                CharacterManager.CharacterManagerInstance._Character.EnergiaRecibida(PuntosEnergia);
                 Destroy(gameObject);
                 //gameObject.SetActive(false);
             }

@@ -36,19 +36,19 @@ public class Character : MonoBehaviour
     public float DistanciaRaycast = 100f;
     [Header("Energia Escudo")]
     [Tooltip("Tiempo de espera entre disparos")]
-    public float VelocidadFuego = 0.2f;
     public int EscudoInicial = 100;
+    public int EscudoActual = 0;
     public float IntervaloParaConsumirEscudo = 1f;
     public int EnergiaInicial = 100;
+    public int EnergiaActual = 0;
     public float IntervaloParaConsumirEnergia = 1f;
     public int GastoEnergiaPorTiempo = 1;
-    [SerializeField]
-    private int energiaActual;
-    [SerializeField]
-    private int escudoActual;
 
 
 
+
+
+    private IEnumerator ienEnergia;
 
     private Animator PlayerAnimator;
     //======Animaciones del player
@@ -70,8 +70,9 @@ public class Character : MonoBehaviour
     }
     void Start()
     {
-        escudoActual = EscudoInicial;
-        energiaActual = EnergiaInicial;
+        EscudoActual = EscudoInicial;
+        EnergiaActual = EnergiaInicial;
+        ienEnergia = IenConsumoEnergia();
     }
 
     // Update is called once per frame
@@ -83,14 +84,18 @@ public class Character : MonoBehaviour
 
     public void DañoRecibido(int daño)
     {
+       
         GameManager.GameManagerInstance._ExplotionManager.ObtenerExplosionPlayer(LugarExplosion);
+        if (Invencible)
+            return;
+
         if (!Golpeado)
         {
-            if (escudoActual - daño >= 0)
+            if (EscudoActual - daño >= 0)
             {
                 //AnimacionDeDaño();
-                escudoActual -= daño;
-                GameManager.GameManagerInstance._UiManager.TxtShieldPlayer.text = ((int)escudoActual * 100 / EscudoInicial).ToString();
+                EscudoActual -= daño;
+                GameManager.GameManagerInstance._UiManager.TxtShieldPlayer.text = ((int)EscudoActual * 100 / EscudoInicial).ToString();
             }
             else
             {
@@ -99,6 +104,24 @@ public class Character : MonoBehaviour
             }
         }
 
+    }
+
+    public void EnergiaRecibida(int energia)
+    {
+        StopCoroutine(ienEnergia);
+        if((EnergiaActual + energia) > EnergiaInicial)
+        {
+            EnergiaActual = EnergiaInicial;
+        }
+        else
+        {
+            EnergiaActual += energia;
+        }
+
+        GameManager.GameManagerInstance._UiManager.TxtEnergyPlayer.text =
+            (EnergiaActual * 100 / EnergiaInicial).ToString();
+
+        StartCoroutine(ienEnergia);
     }
 
     public void AnimacionEnX(float value)
@@ -149,6 +172,11 @@ public class Character : MonoBehaviour
             
     }
 
+    public void IniciarConsumoEnergia()
+    {
+        StartCoroutine(ienEnergia);
+    }
+
     IEnumerator CorParpadeoMaterialDaño()
     {
         Golpeado = true;
@@ -163,5 +191,23 @@ public class Character : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
        
+    }
+
+    IEnumerator IenConsumoEnergia()
+    {
+        while (EnergiaActual > 0)
+        {
+            yield return new WaitForSeconds(IntervaloParaConsumirEnergia);
+            EnergiaActual -= GastoEnergiaPorTiempo;
+
+            GameManager.GameManagerInstance._UiManager.TxtEnergyPlayer.text =
+                (EnergiaActual * 100 / EnergiaInicial).ToString();
+        }
+
+        EnergiaActual = 0;
+        GameManager.GameManagerInstance._UiManager.TxtEnergyPlayer.text = "0";
+
+        //probar estilo para detenar
+
     }
 }

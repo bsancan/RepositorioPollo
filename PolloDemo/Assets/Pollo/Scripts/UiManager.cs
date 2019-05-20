@@ -1,11 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(DualJoystickTouchContoller))]
 public class UiManager : MonoBehaviour
 {
+    public enum TipoPregunta
+    {
+        ninguna = 0,
+        continuarJuego = 1,
+        reiniciarJuego = 2,
+        salirJuego = 3
+    }
+
+    [Header("Menu")]
+    [SerializeField]
+    private GameObject btnMenu;
+    [SerializeField]
+    private GameObject pnlMenu;
+    [SerializeField]
+    private GameObject pnlPregunta;
+    [SerializeField]
+    private Text txtPregunta;
+
+    private TipoPregunta preguntalActual;
+
     [Header("CrossHair")]
  
     public RectTransform RectCrossHairParent;
@@ -64,7 +85,8 @@ public class UiManager : MonoBehaviour
             GoBars.SetActive(true);
         imgCrossHair = RectCrossHairA.GetComponent<Image>();
 
-
+        preguntalActual = TipoPregunta.ninguna;
+        Time.timeScale = 1;
     }
 
     public void MostrarPuntosNegativos(int values, Vector3 pos)
@@ -101,7 +123,7 @@ public class UiManager : MonoBehaviour
         go.SetActive(true);
 
         //asigno los valores al texto
-        go.GetComponent<Points>().StartAnimation("-" + values, ColorPositivePoints);
+        go.GetComponent<Points>().StartAnimation("+" + values, ColorPositivePoints);
     }
 
     public void SetCrossHairColor1()
@@ -126,5 +148,54 @@ public class UiManager : MonoBehaviour
     {
         puntajeAcumulado += p;
         puntaje.text = puntajeAcumulado.ToString();
+    }
+
+    public void MostrarMenu()
+    {
+        Time.timeScale = 0;
+        pnlMenu.SetActive(true);
+        btnMenu.SetActive(false);
+    }
+
+    public void Continuar()
+    {
+        Time.timeScale = 1;
+        pnlMenu.SetActive(false);
+        btnMenu.SetActive(true);
+    }
+
+    public void ReiniciarNivel()
+    {
+        preguntalActual = TipoPregunta.reiniciarJuego;
+        txtPregunta.text = "¿Deseas reiniciar el nivel?";
+        pnlMenu.SetActive(false);
+        pnlPregunta.SetActive(true);
+
+    }
+
+    public void Salir()
+    {
+        preguntalActual = TipoPregunta.salirJuego;
+        txtPregunta.text = "¿Deseas salir del juego?";
+        pnlMenu.SetActive(false);
+        pnlPregunta.SetActive(true);
+    }
+
+    public void RespuestaSI()
+    {
+        if(preguntalActual == TipoPregunta.reiniciarJuego)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }else if (preguntalActual == TipoPregunta.salirJuego)
+        {
+            Application.Quit();
+        }
+    }
+
+    public void RespuestaNO()
+    {
+        preguntalActual = TipoPregunta.ninguna;
+        pnlPregunta.SetActive(false);
+        pnlMenu.SetActive(true);
     }
 }

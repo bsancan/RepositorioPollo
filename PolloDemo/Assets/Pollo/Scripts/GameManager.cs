@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         if(NivelActual == 1)
         {
             _UiManager.IngresarPuntaje(0);
+            CharacterManager.CharacterManagerInstance._Character.IniciarConsumoEnergia();
         }
     }
 }

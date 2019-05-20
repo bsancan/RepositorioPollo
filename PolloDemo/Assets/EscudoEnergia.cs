@@ -27,7 +27,7 @@ public class EscudoEnergia : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Asteroid"))
         {
-            CharacterManager.CharacterManagerInstance._Character.DañoRecibido(other.GetComponent<Asteroid>().ValorDaño);
+            CharacterManager.CharacterManagerInstance._Character.DañoRecibido(other.GetComponent<AsteroidCollider>().asteroid.ValorDaño);
             GetComponent<EscudoEnergiaEventos>().IniciaAnimacion();
             //IniciaEscudo(other.gameObject);
         }

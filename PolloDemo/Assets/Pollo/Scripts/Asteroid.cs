@@ -7,7 +7,7 @@ public class Asteroid : MonoBehaviour
 
     public enum DireccionRotacionAst
     {
-        Ninguna, Arriba, Abajo, Derecha, Izquierda, DeFrente, Atras
+        Arriba, Abajo, Derecha, Izquierda, DeFrente, Atras
     };
 
     public Transform Modelo;
@@ -33,35 +33,47 @@ public class Asteroid : MonoBehaviour
         escudoActual = ValorEscudo;
         if (HabilitarAutoRotacion)
         {
-            int r = Random.Range(0, 6);
+            int r = Random.Range(0, 5);
 
-            if (r == 1) //derecha
+            if (r == 0) 
                 resultadoRotacion = Vector3.right;
-            else if (r == 2) // izquier
-                resultadoRotacion = -Vector3.up;
+            else if (r == 1) 
+                resultadoRotacion = Vector3.left;
+            else if (r == 2)
+                resultadoRotacion = Vector3.down;
             else if (r == 3)
-                resultadoRotacion = Vector3.forward;
-            else if (r == 4)
-                resultadoRotacion = -Vector3.forward;
-            else if (r == 5) // arriba
                 resultadoRotacion = Vector3.up;
-            else if (r == 6) // abajo
-                resultadoRotacion = -Vector3.up;
+            else if (r == 4) // arriba
+                resultadoRotacion = Vector3.back;
+            else if (r == 5) // abajo
+                resultadoRotacion = Vector3.forward;
         }
         else
         {
-            if (DireccionRotacion == DireccionRotacionAst.Arriba) //derecha
+            if (DireccionRotacion == DireccionRotacionAst.Arriba)
                 resultadoRotacion = Vector3.right;
-            else if (DireccionRotacion == DireccionRotacionAst.Abajo) // izquier
-                resultadoRotacion = -Vector3.up;
-            else if (DireccionRotacion == DireccionRotacionAst.DeFrente)
-                resultadoRotacion = Vector3.forward;
-            else if (DireccionRotacion == DireccionRotacionAst.Atras)
-                resultadoRotacion = -Vector3.forward;
-            else if (DireccionRotacion == DireccionRotacionAst.Derecha) // arriba
+            else if (DireccionRotacion == DireccionRotacionAst.Abajo)
+                resultadoRotacion = Vector3.left;
+            else if (DireccionRotacion == DireccionRotacionAst.Derecha)
+                resultadoRotacion = Vector3.down;
+            else if (DireccionRotacion == DireccionRotacionAst.Izquierda)
                 resultadoRotacion = Vector3.up;
-            else if (DireccionRotacion == DireccionRotacionAst.Izquierda) // abajo
-                resultadoRotacion = -Vector3.up;
+            else if (DireccionRotacion == DireccionRotacionAst.DeFrente)
+                resultadoRotacion = Vector3.back;
+            else if (DireccionRotacion == DireccionRotacionAst.Atras)
+                resultadoRotacion = Vector3.forward;
+            //if (DireccionRotacion == DireccionRotacionAst.Arriba) 
+            //    resultadoRotacion = Vector3.right;
+            //else if (DireccionRotacion == DireccionRotacionAst.Abajo) 
+            //    resultadoRotacion = -Vector3.up;
+            //else if (DireccionRotacion == DireccionRotacionAst.DeFrente)
+            //    resultadoRotacion = Vector3.forward;
+            //else if (DireccionRotacion == DireccionRotacionAst.Atras)
+            //    resultadoRotacion = -Vector3.forward;
+            //else if (DireccionRotacion == DireccionRotacionAst.Derecha) 
+            //    resultadoRotacion = Vector3.up;
+            //else if (DireccionRotacion == DireccionRotacionAst.Izquierda) 
+            //    resultadoRotacion = -Vector3.up;
         }
     }
 
@@ -75,21 +87,21 @@ public class Asteroid : MonoBehaviour
             transform.position += transform.forward * VelocidadDeFrente * Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("PlayerAmmo"))
-        {
-            //aplico daño al asteroide
-            TakeDamage(other.GetComponent<PlayerAmmo>().ValorDaño);
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("PlayerAmmo"))
+    //    {
+    //        //aplico daño al asteroide
+    //        TakeDamage(other.GetComponent<PlayerAmmo>().ValorDaño);
 
-        }else if (other.gameObject.CompareTag("PlayerShield") || other.gameObject.CompareTag("Player"))
-        {
-            gameObject.SetActive(false);
-            GameManager.GameManagerInstance._ExplotionManager.ObtenerExplosion(transform, ReEscalaExplosion, TiempoVidaExplosion);
-        }
-    }
+    //    }else if (other.gameObject.CompareTag("PlayerShield") || other.gameObject.CompareTag("Player"))
+    //    {
+    //        gameObject.SetActive(false);
+    //        GameManager.GameManagerInstance._ExplotionManager.ObtenerExplosion(transform, ReEscalaExplosion, TiempoVidaExplosion);
+    //    }
+    //}
 
-    private void TakeDamage(int dañoRecibido)
+    public void TakeDamage(int dañoRecibido)
     {
         int sum = escudoActual - dañoRecibido;
         if (sum > 0)

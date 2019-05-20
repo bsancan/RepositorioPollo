@@ -61,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Modelo: {fileID: 8654441191331666438}
   PuntosEnergia: 10
-  VelocidadDeFrente: -1
+  VelocidadDeFrente: 0
   VelocidadDeRotacion: 10
   VelocidadHaciaPlayer: 10
   DistanciaMinDesaparecer: 1.5

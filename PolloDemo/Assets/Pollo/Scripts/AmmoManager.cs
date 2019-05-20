@@ -7,6 +7,7 @@ public class AmmoManager : MonoBehaviour
 {
     public GameObject PlayerAmmoPrefab = null;
     public float VelocidadPlayerAmmo = 60f;
+    public float VelocidadFuego = 0.1f;
     public float TiempoVidaPlayerAmmo = 1f;
     public int ValorDañoPlayerAmmo = 10;
     public int TamañoPiscinaPlayerAmmo = 20;

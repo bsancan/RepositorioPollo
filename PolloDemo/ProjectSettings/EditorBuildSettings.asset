@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Pollo/Scenes/SampleScene.unity
-    guid: fa64074707ad3dc4fb8f4970dc72546f
+    path: Assets/Pollo/Scenes/PlayerScene.unity
+    guid: b8532aeb5abb3094287c020ece790509
+  - enabled: 1
+    path: Assets/Pollo/Scenes/Nivel01.unity
+    guid: b3ae79e1a6bd1a64bac1cc9214740e01
   m_configObjects: {}

@@ -507,13 +507,13 @@ MonoBehaviour:
   - {fileID: 1605369269}
   - {fileID: 532482524}
   - {fileID: 451070838}
-  Invencible: 0
+  Invencible: 1
   Golpeado: 0
   Muerto: 0
   MinRange: {x: 9, y: 3.2}
   MaxRange: {x: 9, y: 2.6}
   VelocidadXY: 25
-  VelocidadZ: 0
+  VelocidadZ: 10
   VelocidadRotacion: 20
   VelocidadCrossHair: 3
   DistanciaRaycast: 100

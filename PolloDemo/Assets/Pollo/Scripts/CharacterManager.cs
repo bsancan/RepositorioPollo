@@ -10,6 +10,7 @@ public class CharacterManager : MonoBehaviour
 
     private LeftJoystick _LeftJoystick;
     private RightJoystick _RightJoystick;
+   
 
     private float nextFire;
 
@@ -33,6 +34,8 @@ public class CharacterManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_Character.Muerto)
+            return;
 
         _LeftJoystick = GameManager.GameManagerInstance._UiManager.TouchController.leftJoystickBackgroundImage.GetComponent<LeftJoystick>();
         _RightJoystick = GameManager.GameManagerInstance._UiManager.TouchController.rightJoystickBackgroundImage.GetComponent<RightJoystick>();
@@ -42,6 +45,8 @@ public class CharacterManager : MonoBehaviour
         MovimientoCrossHair();
 
     }
+
+    
 
     private void MovimientoCharEnXY()
     {
@@ -74,17 +79,18 @@ public class CharacterManager : MonoBehaviour
         _Character.Model.transform.localRotation = Quaternion.Lerp(_Character.Model.transform.localRotation,
             newRot, Time.deltaTime * _Character.VelocidadRotacion);
 
-        transform.localPosition += (transform.forward * _Character.VelocidadZ);
+        transform.localPosition += (transform.forward * _Character.VelocidadZ * Time.deltaTime);
     }
 
     private void MovimientoCrossHair()
     {
-        //Obtengo un nuevo vector para rotar al Player y los lasers
+        //Posicion del CrossHair desde la camara al mundo
         Vector3 Target = PlayerCamera.ScreenToWorldPoint(
-            new Vector3(GameManager.GameManagerInstance._UiManager.RectCrossHairA.position.x,
-            GameManager.GameManagerInstance._UiManager.RectCrossHairA.position.y,
+            new Vector3(GameManager.GameManagerInstance._UiManager.RectCrossHairB.position.x,
+            GameManager.GameManagerInstance._UiManager.RectCrossHairB.position.y,
             _Character.DistanciaRaycast));
-
+        
+        //Obtengo el movimiento del Joystick derecho y desactivo la animacion de disparo
         Vector3 JsPosition;
         if (_RightJoystick.GetInputDirection() != Vector3.zero)
         {
@@ -102,7 +108,7 @@ public class CharacterManager : MonoBehaviour
             _Character.AnimacionDeDisparo(false);
         }
 
-        //transformo el vector jposition en screen position
+        //transformo el vector jposition en viewport
         Vector2 viewPortPosA = PlayerCamera.ScreenToViewportPoint(JsPosition);
         Vector2 screenPosA = new Vector2(
                 ((viewPortPosA.x * GameManager.GameManagerInstance._UiManager.RectCrossHairParent.sizeDelta.x) - (GameManager.GameManagerInstance._UiManager.RectCrossHairParent.sizeDelta.x * 0.5f)),
@@ -111,11 +117,13 @@ public class CharacterManager : MonoBehaviour
         //controlo que el crosshair no pase los limites de la pantalla
         screenPosA = new Vector3(Mathf.Clamp(screenPosA.x, -(Screen.width / 2), Screen.width / 2),
             Mathf.Clamp(screenPosA.y, -(Screen.height / 2), Screen.height / 2), 0f);
-
-        GameManager.GameManagerInstance._UiManager.RectCrossHairA.anchoredPosition = Vector2.Lerp(
-            GameManager.GameManagerInstance._UiManager.RectCrossHairA.anchoredPosition, screenPosA,
+        
+        //Muevo el crosshairB dependiendo del vector ScreenPosA
+        GameManager.GameManagerInstance._UiManager.RectCrossHairB.anchoredPosition = Vector2.Lerp(
+            GameManager.GameManagerInstance._UiManager.RectCrossHairB.anchoredPosition, screenPosA,
             Time.deltaTime * _Character.VelocidadCrossHair
             );
+
 
         if (_RightJoystick.GetInputDirection() != Vector3.zero)
         {
@@ -124,7 +132,7 @@ public class CharacterManager : MonoBehaviour
             //disparo de ammo
             if (Time.time > nextFire)
             {
-                nextFire = Time.time + _Character.VelocidadFuego;
+                nextFire = Time.time + GameManager.GameManagerInstance._AmmoManager.VelocidadFuego;
                 GameManager.GameManagerInstance._AmmoManager.ObtenerPlayerAmmo(_Character.PosicionLaserCentral);
 
                 //funciona con hit
@@ -154,5 +162,7 @@ public class CharacterManager : MonoBehaviour
         }
         _Character.PosicionLaserCentral.LookAt(Target);
     }
+
+
 
 }
