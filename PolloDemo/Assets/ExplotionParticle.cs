@@ -14,7 +14,7 @@ public class ExplotionParticle : MonoBehaviour
 
     private void OnEnable()
     {
-        print("activacion - " + gameObject.name + " - " + TamañoInicial.x.ToString());
+        //print("activacion - " + gameObject.name + " - " + TamañoInicial.x.ToString());
         transform.localScale = TamañoInicial;
         CancelInvoke("DesactivarExplosionParticle");
         Invoke("DesactivarExplosionParticle", TiempoVida);
