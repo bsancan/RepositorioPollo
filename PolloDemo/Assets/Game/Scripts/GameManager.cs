@@ -198,7 +198,7 @@ public class GameManager : MonoBehaviour
             NivelActual = 1;
             _UiManager.gameObject.SetActive(true);
             _UiManager.IngresarPuntaje(0);
-            CharacterManager.CharacterManagerInstance._Character.IniciarConsumoEnergia();
+            //CharacterManager.CharacterManagerInstance._Character.IniciarConsumoEnergia();
             //AniFade.SetBool(s_Estado, false);
         }
     }
