@@ -14,7 +14,7 @@ public class CharacterManager : MonoBehaviour
 
     private float nextFire;
 
-
+    private Transform charTransform;
     //SOLO PARA PRUEBAS
     private Vector3 mandoIzq;
     private void Awake()
@@ -27,6 +27,8 @@ public class CharacterManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        charTransform = _Character.GetComponent<Transform>();
     }
 
     void Start()
@@ -67,14 +69,14 @@ public class CharacterManager : MonoBehaviour
                 Vector3 accelXY = new Vector3(mandoIzq.x * _Character.VelocidadXY,
                mandoIzq.y * _Character.VelocidadXY,
                0f);
-                Vector3 velocity = transform.localPosition + accelXY * Time.deltaTime;
+                Vector3 velocity = charTransform.localPosition + accelXY * Time.deltaTime;
                 Vector3 velFixed = new Vector3(
                     Mathf.Clamp(velocity.x, -_Character.MinRange.x, _Character.MaxRange.x),
                      Mathf.Clamp(velocity.y, -_Character.MinRange.y, _Character.MaxRange.y),
                      velocity.z
                     );
 
-                transform.localPosition = velFixed;
+                charTransform.localPosition = velFixed;
                 _Character.AnimacionEnX(mandoIzq.x);
             }
         }
@@ -91,14 +93,14 @@ public class CharacterManager : MonoBehaviour
                 Vector3 accelXY = new Vector3(_LeftJoystick.GetInputDirection().x * _Character.VelocidadXY,
                     _LeftJoystick.GetInputDirection().y * _Character.VelocidadXY,
                     0f);
-                Vector3 velocity = transform.localPosition + accelXY * Time.deltaTime;
+                Vector3 velocity = charTransform.localPosition + accelXY * Time.deltaTime;
                 Vector3 velFixed = new Vector3(
                     Mathf.Clamp(velocity.x, -_Character.MinRange.x, _Character.MaxRange.x),
                      Mathf.Clamp(velocity.y, -_Character.MinRange.y, _Character.MaxRange.y),
                      velocity.z
                     );
 
-                transform.localPosition = velFixed;
+                charTransform.localPosition = velFixed;
                 _Character.AnimacionEnX(_LeftJoystick.GetInputDirection().x);
                 //aniPlayer.SetFloat(horizontalHash, xAxis, 0.1f, animationSpeed * Time.deltaTime);
             }

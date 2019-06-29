@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class MainMenuManager : MonoBehaviour
 {
+    public static MainMenuManager MainMenuManagerInstance;
+
+    private void Awake()
+    {
+        if (MainMenuManagerInstance == null)
+        {
+            MainMenuManagerInstance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+
+    }
 
     void Start()
     {

@@ -5,12 +5,21 @@ using UnityEngine.UI;
 
 public class HistoriaManager : MonoBehaviour
 {
+    public static HistoriaManager HistoriaManagerInstance;
     public Animator AniHistoria;
-   
-    void Awake()
+
+    private void Awake()
     {
+        if (HistoriaManagerInstance == null)
+        {
+            HistoriaManagerInstance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
-
+        
     }
 
     void Start()

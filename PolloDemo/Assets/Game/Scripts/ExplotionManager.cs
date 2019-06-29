@@ -54,8 +54,8 @@ public class ExplotionManager : MonoBehaviour
         spawnedExplosion.GetComponent<ExplotionParticle>().ParametrosIniciales (ReEscalaTamaño.x * asteroid.localScale, TiempoVidaExplosion);
         spawnedExplosion.position = asteroid.position;
 
-        print(asteroid.name);
-        print(ReEscalaTamaño + asteroid.localScale);
+        //print(asteroid.name);
+        //print(ReEscalaTamaño + asteroid.localScale);
 
         spawnedExplosion.gameObject.SetActive(true);
         
