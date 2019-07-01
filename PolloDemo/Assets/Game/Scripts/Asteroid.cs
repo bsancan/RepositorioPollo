@@ -31,50 +31,8 @@ public class Asteroid : MonoBehaviour
     private void OnEnable()
     {
         escudoActual = ValorEscudo;
-        if (HabilitarAutoRotacion)
-        {
-            int r = Random.Range(0, 5);
-
-            if (r == 0) 
-                resultadoRotacion = Vector3.right;
-            else if (r == 1) 
-                resultadoRotacion = Vector3.left;
-            else if (r == 2)
-                resultadoRotacion = Vector3.down;
-            else if (r == 3)
-                resultadoRotacion = Vector3.up;
-            else if (r == 4) // arriba
-                resultadoRotacion = Vector3.back;
-            else if (r == 5) // abajo
-                resultadoRotacion = Vector3.forward;
-        }
-        else
-        {
-            if (DireccionRotacion == DireccionRotacionAst.Arriba)
-                resultadoRotacion = Vector3.right;
-            else if (DireccionRotacion == DireccionRotacionAst.Abajo)
-                resultadoRotacion = Vector3.left;
-            else if (DireccionRotacion == DireccionRotacionAst.Derecha)
-                resultadoRotacion = Vector3.down;
-            else if (DireccionRotacion == DireccionRotacionAst.Izquierda)
-                resultadoRotacion = Vector3.up;
-            else if (DireccionRotacion == DireccionRotacionAst.DeFrente)
-                resultadoRotacion = Vector3.back;
-            else if (DireccionRotacion == DireccionRotacionAst.Atras)
-                resultadoRotacion = Vector3.forward;
-            //if (DireccionRotacion == DireccionRotacionAst.Arriba) 
-            //    resultadoRotacion = Vector3.right;
-            //else if (DireccionRotacion == DireccionRotacionAst.Abajo) 
-            //    resultadoRotacion = -Vector3.up;
-            //else if (DireccionRotacion == DireccionRotacionAst.DeFrente)
-            //    resultadoRotacion = Vector3.forward;
-            //else if (DireccionRotacion == DireccionRotacionAst.Atras)
-            //    resultadoRotacion = -Vector3.forward;
-            //else if (DireccionRotacion == DireccionRotacionAst.Derecha) 
-            //    resultadoRotacion = Vector3.up;
-            //else if (DireccionRotacion == DireccionRotacionAst.Izquierda) 
-            //    resultadoRotacion = -Vector3.up;
-        }
+        StartCoroutine(CorRotacionEnEspera());
+       
     }
 
 
@@ -126,5 +84,55 @@ public class Asteroid : MonoBehaviour
 
         GameManager.GameManagerInstance._UiManager.IngresarPuntaje(dañoRecibido);
 
+    }
+
+    IEnumerator CorRotacionEnEspera()
+    {
+        float random = Random.Range(0.1f,2f);
+        yield return new WaitForSeconds(random);
+        if (HabilitarAutoRotacion)
+        {
+            int r = Random.Range(0, 5);
+
+            if (r == 0)
+                resultadoRotacion = Vector3.right;
+            else if (r == 1)
+                resultadoRotacion = Vector3.left;
+            else if (r == 2)
+                resultadoRotacion = Vector3.down;
+            else if (r == 3)
+                resultadoRotacion = Vector3.up;
+            else if (r == 4) // arriba
+                resultadoRotacion = Vector3.back;
+            else if (r == 5) // abajo
+                resultadoRotacion = Vector3.forward;
+        }
+        else
+        {
+            if (DireccionRotacion == DireccionRotacionAst.Arriba)
+                resultadoRotacion = Vector3.right;
+            else if (DireccionRotacion == DireccionRotacionAst.Abajo)
+                resultadoRotacion = Vector3.left;
+            else if (DireccionRotacion == DireccionRotacionAst.Derecha)
+                resultadoRotacion = Vector3.down;
+            else if (DireccionRotacion == DireccionRotacionAst.Izquierda)
+                resultadoRotacion = Vector3.up;
+            else if (DireccionRotacion == DireccionRotacionAst.DeFrente)
+                resultadoRotacion = Vector3.back;
+            else if (DireccionRotacion == DireccionRotacionAst.Atras)
+                resultadoRotacion = Vector3.forward;
+            //if (DireccionRotacion == DireccionRotacionAst.Arriba) 
+            //    resultadoRotacion = Vector3.right;
+            //else if (DireccionRotacion == DireccionRotacionAst.Abajo) 
+            //    resultadoRotacion = -Vector3.up;
+            //else if (DireccionRotacion == DireccionRotacionAst.DeFrente)
+            //    resultadoRotacion = Vector3.forward;
+            //else if (DireccionRotacion == DireccionRotacionAst.Atras)
+            //    resultadoRotacion = -Vector3.forward;
+            //else if (DireccionRotacion == DireccionRotacionAst.Derecha) 
+            //    resultadoRotacion = Vector3.up;
+            //else if (DireccionRotacion == DireccionRotacionAst.Izquierda) 
+            //    resultadoRotacion = -Vector3.up;
+        }
     }
 }

@@ -180,16 +180,16 @@ public class CharacterManager : MonoBehaviour
                 RaycastHit _rayHit;
                 if (Physics.Raycast(_ray, out _rayHit, _Character.DistanciaRaycast))
                 {
-          
+                    //Para trazar una linea de alcance del raycast
+                    //Debug.DrawRay(_ray.origin, _ray.direction * _Character.DistanciaRaycast, Color.yellow, 2.0f);
+
                     if (_rayHit.collider.gameObject.CompareTag("Asteroid") || _rayHit.collider.gameObject.CompareTag("Enemy"))
                     {
-                        print("sssss");
                         GameManager.GameManagerInstance._UiManager.SetCrossHairColor3();
                         _Character.PosicionLaserCentral.LookAt(_rayHit.collider.transform);
                     }
                     else
                     {
-                        print("xxxxx");
                         GameManager.GameManagerInstance._UiManager.SetCrossHairColor2();
                         _Character.PosicionLaserCentral.LookAt(Target);
                     }

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    public ParticleSystem SisParticulas;
     public Transform Modelo;
+    public GameObject Plano;
     public int PuntosEnergia;
     public float VelocidadDeFrente = 1f;
     public float VelocidadDeRotacion = 10f;
@@ -13,7 +15,9 @@ public class Item : MonoBehaviour
 
     private Vector3 direccionRotacion;
     private bool playerAlcanzoItem;
+    private Vector3 posicionAntesDelContacto;
 
+    //private ParticleSystem.LimitVelocityOverLifetimeModule limitVelocityModule;
     void Start()
     {
         direccionRotacion = Vector3.up;    
@@ -33,30 +37,57 @@ public class Item : MonoBehaviour
         }
         else
         {
-            if (Vector3.Distance(
-               CharacterManager.CharacterManagerInstance._Character.transform.position,
-               transform.position) > DistanciaMinDesaparecer)
-            {
-                transform.position = Vector3.Lerp(transform.position,
-               CharacterManager.CharacterManagerInstance._Character.transform.position,
-               VelocidadHaciaPlayer * Time.deltaTime);
-            }
-            else
-            {
-                GameManager.GameManagerInstance._UiManager.MostrarPuntosPositivos(PuntosEnergia, transform.position);
-                CharacterManager.CharacterManagerInstance._Character.EnergiaRecibida(PuntosEnergia);
-                Destroy(gameObject);
-                //gameObject.SetActive(false);
-            }
+
+            //transform.position = CharacterManager.CharacterManagerInstance._Character.transform.position + posicionAntesDelContacto;
+            transform.position = Vector3.Lerp(transform.position,
+            CharacterManager.CharacterManagerInstance._Character.transform.position,
+            VelocidadHaciaPlayer * Time.deltaTime);
+
+            //if (Vector3.Distance(
+            //   CharacterManager.CharacterManagerInstance._Character.transform.position,
+            //   transform.position) > DistanciaMinDesaparecer)
+            //{
+            //    transform.position = Vector3.Lerp(transform.position,
+            //   CharacterManager.CharacterManagerInstance._Character.transform.position,
+            //   VelocidadHaciaPlayer * Time.deltaTime);
+
+
+            //}
+            //else
+            //{
+            //    GameManager.GameManagerInstance._UiManager.MostrarPuntosPositivos(PuntosEnergia, transform.position);
+            //    CharacterManager.CharacterManagerInstance._Character.EnergiaRecibida(PuntosEnergia);
+            //    Destroy(gameObject);
+
+            //}
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("PlayerShield"))
         {
+            //limitVelocityModule = SisParticulas.limitVelocityOverLifetime;
+            //limitVelocityModule.limit = 10f;
+            posicionAntesDelContacto = transform.position - CharacterManager.CharacterManagerInstance._Character.transform.position;
             playerAlcanzoItem = true;
+            Plano.SetActive(false);
+            Modelo.gameObject.SetActive(false);
+            StartCoroutine(EsperarEmisionTermine());
             //gameObject.SetActive(false);
         }
+    }
+
+    IEnumerator EsperarEmisionTermine()
+    {
+        SisParticulas.Stop();
+
+        while (SisParticulas.isEmitting)
+        {
+            yield return null;
+        }
+        GameManager.GameManagerInstance._UiManager.MostrarPuntosPositivos(PuntosEnergia, transform.position);
+        CharacterManager.CharacterManagerInstance._Character.EnergiaRecibida(PuntosEnergia);
+        //Destroy(gameObject);
     }
 }

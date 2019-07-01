@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAmmo : MonoBehaviour {
 
     private float velocidad = 2f;
-    private float tiempoVida = 2f;
+    private float tiempoVida = 0.5f;
     private int valorDaño = 10;
 
     public int ValorDaño

@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - PlayerShield
   - Item
+  - PlayerWindZone
   layers:
   - Default
   - TransparentFX

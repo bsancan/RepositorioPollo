@@ -97,7 +97,7 @@ public class UiManager : MonoBehaviour
             TouchController.rightJoystickBackgroundImage.gameObject.SetActive(true);
         if (!GoBars.activeInHierarchy)
             GoBars.SetActive(true);
-        imgCrossHair = RectCrossHairA.GetComponent<Image>();
+        imgCrossHair = RectCrossHairB.GetComponent<Image>();
 
         preguntalActual = TipoPregunta.ninguna;
         Time.timeScale = 1;
