@@ -29,6 +29,8 @@ public class CharacterManager : MonoBehaviour
         }
 
         charTransform = _Character.GetComponent<Transform>();
+
+        DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -51,6 +53,13 @@ public class CharacterManager : MonoBehaviour
 
     }
 
+    public void ResetCharacterManager()
+    {
+        transform.position = Vector3.zero;
+        _Character.ResetCharacter();
+        
+
+    }
     
 
     private void MovimientoCharEnXY()
@@ -171,13 +180,16 @@ public class CharacterManager : MonoBehaviour
                 RaycastHit _rayHit;
                 if (Physics.Raycast(_ray, out _rayHit, _Character.DistanciaRaycast))
                 {
+          
                     if (_rayHit.collider.gameObject.CompareTag("Asteroid") || _rayHit.collider.gameObject.CompareTag("Enemy"))
                     {
+                        print("sssss");
                         GameManager.GameManagerInstance._UiManager.SetCrossHairColor3();
                         _Character.PosicionLaserCentral.LookAt(_rayHit.collider.transform);
                     }
                     else
                     {
+                        print("xxxxx");
                         GameManager.GameManagerInstance._UiManager.SetCrossHairColor2();
                         _Character.PosicionLaserCentral.LookAt(Target);
                     }

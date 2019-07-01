@@ -14,6 +14,6 @@ public class HistoriaEvent : MonoBehaviour
     public void IrAlNivel()
     {
 
-        GameManager.GameManagerInstance.IrAlNivel("1");
+        GameManager.GameManagerInstance.IrAlNivel(GameManager.GameManagerInstance.e_Nivel01);
     }
 }

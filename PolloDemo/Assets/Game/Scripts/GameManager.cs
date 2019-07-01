@@ -12,8 +12,9 @@ public class GameManager : MonoBehaviour
     public ExplotionManager _ExplotionManager;
 
     
-    public int NivelActual;
+    //public int NivelActual;
     private string siguienteNivel;
+    public string ActualNivel;
 
     //======Animaciones del player
     private int s_Inicio = Animator.StringToHash("Inicio");
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
         if (GameManagerInstance == null)
         {
             GameManagerInstance = this;
-            GameManagerInstance.NivelActual = 0;
+            //GameManagerInstance.NivelActual = 0;
             DontDestroyOnLoad(this);
             _UiManager.gameObject.SetActive(false);
         }
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 30;
+        _UiManager.ResetUiManager();
 
         if (!CargarEscena)
         {
@@ -59,13 +61,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if (CodigoEscena == "H")
-                siguienteNivel = e_Historia;
-            else if (CodigoEscena == "1")
-                siguienteNivel = e_Nivel01;
-            else if (CodigoEscena == "2")
-                siguienteNivel = e_Nivel02;
-            //StartCoroutine(EsperaCargaDeEscenaAsync());
+            siguienteNivel = CodigoEscena;
             CargarNivelManualmente();
         }
  
@@ -86,61 +82,99 @@ public class GameManager : MonoBehaviour
             HistoriaManager hm = GameObject.FindObjectOfType<HistoriaManager>();
             if(hm != null)
             {
+                _UiManager.ResetUiManager();
+                _UiManager.gameObject.SetActive(false);
                 AniFade.SetBool(s_Estado, false);
                 hm.AniHistoria.SetTrigger("Inicio");
             }
 
         }
-        else if(scene.name == e_PlayerManager)
-        {
-            siguienteNivel = e_Nivel01;
-            CargarEscenaAsync();
-        }
+        //else if(scene.name == e_PlayerManager)
+        //{
+        //    siguienteNivel = e_Nivel01;
+        //    CargarEscenaAsync();
+        //}
         else if (scene.name == e_Nivel01)
         {
-            NivelActual = 1;
+            //NivelActual = 1;
             _UiManager.gameObject.SetActive(true);
+            _UiManager.ResetUiManager();
             _UiManager.IngresarPuntaje(0);
+            CharacterManager.CharacterManagerInstance.gameObject.SetActive(true);
             CharacterManager.CharacterManagerInstance._Character.IniciarConsumoEnergia();
             AniFade.SetBool(s_Estado, false);
         }
+        else if (scene.name == e_Menu)
+        {
+            //NivelActual = 1;
+            _UiManager.ResetUiManager();
+            _UiManager.gameObject.SetActive(false);
+            AniFade.SetBool(s_Estado, false);
+            AniFade.SetTrigger(s_Inicio);
+        }
 
-        
+
     }
 
     public void CargarEscenaAsync()
     {
+        //reset UI MANAGER
+
+        Time.timeScale = 1;
         StartCoroutine(EsperaCargaDeEscenaAsync());
     }
 
 
-    #region Botones del menu principal
+    #region Botones del menu principal para cargar el player en primera instancia
     public void IrAlNivel(string nom)
     {
         AniFade.SetBool(s_Estado, true);
 
-        if (nom == "H")
+        if (nom == e_Historia)
         {
             siguienteNivel = e_Historia;
         }
-        else if(nom == "1")
+        else if (nom == e_Nivel01)
         {
-            siguienteNivel = e_PlayerManager;
+            siguienteNivel = e_Nivel01;
         }
-        else if(nom == "2")
-        {
-            siguienteNivel = e_Nivel02;
-        }
+        //else if (nom == "2")
+        //{
+        //    siguienteNivel = e_Nivel02;
+        //}
+
         print(siguienteNivel);
     }
     #endregion
 
+    #region Botones para el menu de los niveles
+
+    public void ReinicialNivel()
+    {
+        AniFade.SetBool(s_Estado, true);
+        siguienteNivel = ActualNivel;
+    }
+
+    public void RegresarMenuPrincipal()
+    {
+        AniFade.SetBool(s_Estado, true);
+        siguienteNivel = e_Menu;
+        
+    }
+
+    #endregion
+
     IEnumerator EsperaCargaDeEscenaAsync()
     {
-        // The Application loads the Scene in the background as the current Scene runs.
-        // This is particularly good for creating loading screens.
-        // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
-        // a sceneBuildIndex of 1 as shown in Build Settings.
+
+        //if (siguienteNivel != e_Menu)
+        //{
+        //    CharacterManager.CharacterManagerInstance.gameObject.SetActive(true);
+        //    CharacterManager.CharacterManagerInstance.ResetCharacterManager();
+
+        //}
+        CharacterManager.CharacterManagerInstance.ResetCharacterManager();
+        CharacterManager.CharacterManagerInstance.gameObject.SetActive(false);
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(siguienteNivel);
 
@@ -149,6 +183,10 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
         }
+
+       
+
+        ActualNivel = siguienteNivel;
 
         if (!CargarEscena)
         {
@@ -174,15 +212,25 @@ public class GameManager : MonoBehaviour
         // This is particularly good for creating loading screens.
         // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
         // a sceneBuildIndex of 1 as shown in Build Settings.
-        
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(e_Menu);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(e_PlayerManager);
 
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
             yield return null;
         }
-        
+        CharacterManager.CharacterManagerInstance.gameObject.SetActive(false);
+
+        asyncLoad = SceneManager.LoadSceneAsync(e_Menu);
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+       
+        ActualNivel = e_Menu;
         AniFade.SetTrigger(s_Inicio);
 
         
@@ -195,7 +243,7 @@ public class GameManager : MonoBehaviour
         AniFade.gameObject.SetActive(false);
         if (siguienteNivel == e_Nivel01)
         {
-            NivelActual = 1;
+            //NivelActual = 1;
             _UiManager.gameObject.SetActive(true);
             _UiManager.IngresarPuntaje(0);
             //CharacterManager.CharacterManagerInstance._Character.IniciarConsumoEnergia();

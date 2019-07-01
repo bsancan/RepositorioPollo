@@ -10,6 +10,7 @@ public class Character : MonoBehaviour
     public GameObject Model;
     public Transform PosicionLaserCentral;
     public Transform LugarExplosion;
+    public GameObject Portal;
     public Material MaterialModeloNormal;
     public Material MaterialModeloParpadeo;
     public List<Renderer> listarender;
@@ -70,15 +71,25 @@ public class Character : MonoBehaviour
     }
     void Start()
     {
-        EscudoActual = EscudoInicial;
-        EnergiaActual = EnergiaInicial;
-        ienEnergia = IenConsumoEnergia();
+        ResetCharacter();
     }
 
     // Update is called once per frame
     void Update()
     {
        
+    }
+
+    public void ResetCharacter()
+    {
+        transform.position = Vector3.zero;
+        EscudoActual = EscudoInicial;
+        EnergiaActual = EnergiaInicial;
+        if (ienEnergia != null)
+            StopCoroutine(ienEnergia);
+        else
+            ienEnergia = IenConsumoEnergia();
+        
     }
 
 

@@ -77,6 +77,16 @@ public class UiManager : MonoBehaviour
         txtTiempo.text = timer.ToString("F");
     }
 
+    public void ResetUiManager()
+    {
+        TxtEnergyPlayer.text = "100";
+        TxtShieldPlayer.text = "100";
+        preguntalActual = TipoPregunta.ninguna;
+        pnlPregunta.SetActive(false);
+        pnlMenu.SetActive(false);
+        btnMenu.SetActive(true);
+    }
+
     private void DefaultConfiguration()
     {
         if (TouchController == null)
@@ -154,11 +164,17 @@ public class UiManager : MonoBehaviour
         puntaje.text = puntajeAcumulado.ToString();
     }
 
+    #region Menu para niveles
     public void MostrarMenu()
     {
         Time.timeScale = 0;
         pnlMenu.SetActive(true);
         btnMenu.SetActive(false);
+    }
+
+    public void RegresarMenuPrincipal()
+    {
+        GameManager.GameManagerInstance.RegresarMenuPrincipal();
     }
 
     public void Continuar()
@@ -187,10 +203,12 @@ public class UiManager : MonoBehaviour
 
     public void RespuestaSI()
     {
-        if(preguntalActual == TipoPregunta.reiniciarJuego)
+        if (preguntalActual == TipoPregunta.reiniciarJuego)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }else if (preguntalActual == TipoPregunta.salirJuego)
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameManager.GameManagerInstance.ReinicialNivel();
+        }
+        else if (preguntalActual == TipoPregunta.salirJuego)
         {
             Application.Quit();
         }
@@ -202,4 +220,7 @@ public class UiManager : MonoBehaviour
         pnlPregunta.SetActive(false);
         pnlMenu.SetActive(true);
     }
+    #endregion
+
+
 }

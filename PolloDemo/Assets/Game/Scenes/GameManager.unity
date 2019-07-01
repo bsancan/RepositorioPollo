@@ -96,7 +96,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: e34e198afeff88445b8956b5f7fa8860,
+    type: 2}
   m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
@@ -259,11 +260,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CnvFade
       objectReference: {fileID: 0}
-    - target: {fileID: 226331570607625320, guid: 0ae193e103036b445bf9b4d1fbbe9a92,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 226331570607625323, guid: 0ae193e103036b445bf9b4d1fbbe9a92,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -369,21 +365,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 226331571229914705, guid: 0ae193e103036b445bf9b4d1fbbe9a92,
-        type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 226331571229914705, guid: 0ae193e103036b445bf9b4d1fbbe9a92,
-        type: 3}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 226331571229914705, guid: 0ae193e103036b445bf9b4d1fbbe9a92,
-        type: 3}
-      propertyPath: m_BlocksRaycasts
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ae193e103036b445bf9b4d1fbbe9a92, type: 3}
 --- !u!114 &1751552001 stripped
@@ -437,7 +418,7 @@ MonoBehaviour:
   _AmmoManager: {fileID: 879678465}
   _UiManager: {fileID: 9194512181848549094}
   _ExplotionManager: {fileID: 1751552001}
-  NivelActual: 1
+  ActualNivel: 
   e_Carga: PantallaDeCarga
   e_Menu: MainMenuScene
   e_Historia: Historia
@@ -445,7 +426,7 @@ MonoBehaviour:
   e_Nivel01: Nivel01
   e_Nivel02: Nivel02
   CargarEscena: 0
-  CodigoEscena: 1
+  CodigoEscena: Nivel01
 --- !u!4 &1862917181
 Transform:
   m_ObjectHideFlags: 0
@@ -776,7 +757,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 9194512181848549092}
+      objectReference: {fileID: 9194512181848549094}
+    - target: {fileID: 7930034547850881279, guid: 1ab6fb14c78838d4ebe94e26fea24246,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RegresarMenuPrincipal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7930034547850881279, guid: 1ab6fb14c78838d4ebe94e26fea24246,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7930034547850881154, guid: 1ab6fb14c78838d4ebe94e26fea24246,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1039,6 +1030,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515570688046775704, guid: b9aa25143811f024eb951651535ecfb5,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9aa25143811f024eb951651535ecfb5, type: 3}
