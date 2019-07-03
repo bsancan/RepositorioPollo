@@ -284,8 +284,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
-      minScalar: 1
+      scalar: 5
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -975,7 +975,7 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 0.35
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3834,7 +3834,7 @@ ParticleSystem:
     intensityCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3884,7 +3884,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    maxLights: 10
+    maxLights: 5
   TrailModule:
     enabled: 1
     mode: 0
@@ -4020,7 +4020,7 @@ ParticleSystem:
     widthOverTrail:
       serializedVersion: 2
       minMaxState: 1
-      scalar: 0.5
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4083,7 +4083,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 2
       minColor: {r: 1, g: 0, b: 0.39841652, a: 1}
-      maxColor: {r: 1, g: 0.007843138, b: 0, a: 0}
+      maxColor: {r: 1, g: 0.36163157, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 0.009791564, b: 0, a: 1}
@@ -4992,10 +4992,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 6c45d4aa534e7174e98fd3c4c4a3b3e4, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6c45d4aa534e7174e98fd3c4c4a3b3e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -5051,6 +5047,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 6c45d4aa534e7174e98fd3c4c4a3b3e4, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 6c45d4aa534e7174e98fd3c4c4a3b3e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 6c45d4aa534e7174e98fd3c4c4a3b3e4, type: 3}
       propertyPath: m_ReceiveShadows

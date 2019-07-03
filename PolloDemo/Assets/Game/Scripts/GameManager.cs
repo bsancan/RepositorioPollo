@@ -248,6 +248,13 @@ public class GameManager : MonoBehaviour
             _UiManager.IngresarPuntaje(0);
             //CharacterManager.CharacterManagerInstance._Character.IniciarConsumoEnergia();
             //AniFade.SetBool(s_Estado, false);
+        }else if (siguienteNivel == e_Nivel02)
+        {
+            //NivelActual = 1;
+            _UiManager.gameObject.SetActive(true);
+            _UiManager.IngresarPuntaje(0);
+            //CharacterManager.CharacterManagerInstance._Character.IniciarConsumoEnergia();
+            //AniFade.SetBool(s_Estado, false);
         }
     }
 
