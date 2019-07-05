@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public string e_Menu = "MainMenuScene";
     public string e_Historia = "Historia";
     public string e_PlayerManager = "Player";
+    public string e_Tutorial = "Tutorial";
     public string e_Nivel01 = "Nivel01";
     public string e_Nivel02 = "Nivel02";
 
@@ -249,6 +250,14 @@ public class GameManager : MonoBehaviour
             //CharacterManager.CharacterManagerInstance._Character.IniciarConsumoEnergia();
             //AniFade.SetBool(s_Estado, false);
         }else if (siguienteNivel == e_Nivel02)
+        {
+            //NivelActual = 1;
+            _UiManager.gameObject.SetActive(true);
+            _UiManager.IngresarPuntaje(0);
+            //CharacterManager.CharacterManagerInstance._Character.IniciarConsumoEnergia();
+            //AniFade.SetBool(s_Estado, false);
+        }
+        else if (siguienteNivel == e_Tutorial)
         {
             //NivelActual = 1;
             _UiManager.gameObject.SetActive(true);

@@ -5,10 +5,11 @@ using UnityEngine;
 public class Nivel01Manager : MonoBehaviour
 {
     public static Nivel01Manager NivelManagerInstance;
+    public Transform Portal;
     public int SiguientePatron;
     public GameObject[] PatronesAsteroides;
 
-   
+    private Vector3 portalOffset;
 
     private void Awake()
     {
@@ -26,13 +27,13 @@ public class Nivel01Manager : MonoBehaviour
 
     void Start()
     {
-        
+        portalOffset = Portal.position - CharacterManager.CharacterManagerInstance.transform.position;
     }
 
 
     void Update()
     {
-        
+        Portal.position = CharacterManager.CharacterManagerInstance.transform.position + portalOffset;
     }
 
     public void InstanciarPatronAsteroide()
