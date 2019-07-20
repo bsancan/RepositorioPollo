@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17212406, g: 0.20595807, b: 0.24550024, a: 1}
+  m_IndirectSpecularColor: {r: 0.1813182, g: 0.22693028, b: 0.3073666, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -434,8 +434,8 @@ MonoBehaviour:
   Muerto: 0
   MinRange: {x: 12, y: 5}
   MaxRange: {x: 12, y: 4.4}
-  VelocidadXY: 25
-  VelocidadZ: 10
+  VelocidadXY: 30
+  VelocidadZ: 20
   VelocidadRotacion: 20
   VelocidadCrossHair: 3
   DistanciaRaycast: 150
@@ -668,7 +668,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.03567435, g: 0, b: 0.2735849, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

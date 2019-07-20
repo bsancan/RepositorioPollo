@@ -423,9 +423,10 @@ MonoBehaviour:
   e_Menu: MainMenuScene
   e_Historia: Historia
   e_PlayerManager: Player
+  e_Tutorial: Tutorial
   e_Nivel01: Nivel01
   e_Nivel02: Nivel02
-  CargarEscena: 1
+  CargarEscena: 0
   CodigoEscena: Nivel01
 --- !u!4 &1862917181
 Transform:
