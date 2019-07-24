@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4492038641015240504}
   - component: {fileID: 4366253406987106298}
   - component: {fileID: 4367372003048104390}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ef_EngineFire_Player_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4585,7 +4585,7 @@ ParticleSystem:
 --- !u!199 &4367372003048104390
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}

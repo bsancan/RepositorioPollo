@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager GameManagerInstance;
+    public int FrameRate;
     public Animator AniFade;
     public AmmoManager _AmmoManager;
     public UiManager _UiManager;
@@ -46,14 +47,14 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Application.targetFrameRate = 30;
+        Application.targetFrameRate = FrameRate;
+        QualitySettings.vSyncCount = 0;
+
         _UiManager.ResetUiManager();
 
         if (!CargarEscena)
@@ -76,9 +77,9 @@ public class GameManager : MonoBehaviour
     void IniciarNivel()
     {
         // Return the current Active Scene in order to get the current Scene name.
-        Scene scene = SceneManager.GetActiveScene();
+        //Scene scene = SceneManager.GetActiveScene();
 
-        if(scene.name == e_Historia)
+        if(ActualNivel == e_Historia)
         {
             HistoriaManager hm = GameObject.FindObjectOfType<HistoriaManager>();
             if(hm != null)
@@ -95,7 +96,7 @@ public class GameManager : MonoBehaviour
         //    siguienteNivel = e_Nivel01;
         //    CargarEscenaAsync();
         //}
-        else if (scene.name == e_Nivel01)
+        else if (ActualNivel == e_Nivel01)
         {
             //NivelActual = 1;
             _UiManager.gameObject.SetActive(true);
@@ -104,8 +105,9 @@ public class GameManager : MonoBehaviour
             CharacterManager.CharacterManagerInstance.gameObject.SetActive(true);
             CharacterManager.CharacterManagerInstance._Character.IniciarConsumoEnergia();
             AniFade.SetBool(s_Estado, false);
+            CharacterManager.CharacterManagerInstance._Character.EnMovimiento = true;
         }
-        else if (scene.name == e_Menu)
+        else if (ActualNivel == e_Menu)
         {
             //NivelActual = 1;
             _UiManager.ResetUiManager();
@@ -113,7 +115,17 @@ public class GameManager : MonoBehaviour
             AniFade.SetBool(s_Estado, false);
             AniFade.SetTrigger(s_Inicio);
         }
-
+        else if (ActualNivel == e_Nivel02)
+        {
+            //NivelActual = 1;
+            _UiManager.gameObject.SetActive(true);
+            _UiManager.ResetUiManager();
+            _UiManager.IngresarPuntaje(0);
+            CharacterManager.CharacterManagerInstance.gameObject.SetActive(true);
+            CharacterManager.CharacterManagerInstance._Character.IniciarConsumoEnergia();
+            AniFade.SetBool(s_Estado, false);
+            CharacterManager.CharacterManagerInstance._Character.EnMovimiento = true;
+        }
 
     }
 
@@ -130,16 +142,17 @@ public class GameManager : MonoBehaviour
     public void IrAlNivel(string nom)
     {
         AniFade.SetBool(s_Estado, true);
+        siguienteNivel = nom;
 
-        if (nom == e_Historia)
-        {
-            siguienteNivel = e_Historia;
-        }
-        else if (nom == e_Nivel01)
-        {
-            siguienteNivel = e_Nivel01;
-        }
-        //else if (nom == "2")
+        //if (nom == e_Historia)
+        //{
+        //    siguienteNivel = e_Historia;
+        //}
+        //else if (nom == e_Nivel01)
+        //{
+        //    siguienteNivel = e_Nivel01;
+        //}
+        //else if (nom == e_Nivel02)
         //{
         //    siguienteNivel = e_Nivel02;
         //}
@@ -245,15 +258,21 @@ public class GameManager : MonoBehaviour
         if (siguienteNivel == e_Nivel01)
         {
             //NivelActual = 1;
+            ActualNivel = e_Nivel01;
             _UiManager.gameObject.SetActive(true);
             _UiManager.IngresarPuntaje(0);
+            CharacterManager.CharacterManagerInstance._Character.EnMovimiento = true;
+
             //CharacterManager.CharacterManagerInstance._Character.IniciarConsumoEnergia();
             //AniFade.SetBool(s_Estado, false);
         }else if (siguienteNivel == e_Nivel02)
         {
             //NivelActual = 1;
+            ActualNivel = e_Nivel02;
             _UiManager.gameObject.SetActive(true);
             _UiManager.IngresarPuntaje(0);
+            CharacterManager.CharacterManagerInstance._Character.EnMovimiento = true;
+            //Nivel02Manager.Nivel02ManagerInstance.IniciarAnimacionDeRecorrido();
             //CharacterManager.CharacterManagerInstance._Character.IniciarConsumoEnergia();
             //AniFade.SetBool(s_Estado, false);
         }

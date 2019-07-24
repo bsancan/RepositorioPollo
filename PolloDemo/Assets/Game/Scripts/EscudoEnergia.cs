@@ -31,6 +31,13 @@ public class EscudoEnergia : MonoBehaviour
             GetComponent<EscudoEnergiaEventos>().IniciaAnimacion();
             //IniciaEscudo(other.gameObject);
         }
+        else if (other.gameObject.CompareTag("EnemyAmmo"))
+        {
+            CharacterManager.CharacterManagerInstance._Character.DañoRecibido(other.GetComponent<EnemyAmmo>().ValorDaño);
+            GetComponent<EscudoEnergiaEventos>().IniciaAnimacion();
+            //IniciaEscudo(other.gameObject);
+        }
+        
     }
 
     //void IniciaEscudo(GameObject other)

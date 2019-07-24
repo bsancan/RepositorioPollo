@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 342334533534388871}
   - component: {fileID: 2387867875749018766}
   - component: {fileID: 9072773384660282562}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4780,7 +4780,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7283417296660232159}
   - component: {fileID: 4202601135308370029}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WindZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4826,7 +4826,7 @@ GameObject:
   - component: {fileID: 3780803317316683314}
   - component: {fileID: 2463330589700110326}
   - component: {fileID: 4329051849872792392}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PlayerItem
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -4897,7 +4897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 7c9bbfff06cad7846a28405cbdc53162, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 7c9bbfff06cad7846a28405cbdc53162, type: 3}
       propertyPath: m_IsActive
@@ -4990,7 +4990,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 6c45d4aa534e7174e98fd3c4c4a3b3e4, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6c45d4aa534e7174e98fd3c4c4a3b3e4, type: 3}
       propertyPath: m_LocalPosition.x

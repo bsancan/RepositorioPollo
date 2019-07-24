@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3032960880350815918}
   - component: {fileID: 2943182206265685372}
   - component: {fileID: 2944300388628036116}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ef_ExplosionRing_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4661,7 +4661,7 @@ ParticleSystem:
 --- !u!199 &2944300388628036116
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4732,7 +4732,7 @@ GameObject:
   - component: {fileID: 2944000338017003900}
   - component: {fileID: 2943751827735882834}
   - component: {fileID: 24419498088444169}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ef_Explosion_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9383,7 +9383,7 @@ ParticleSystem:
 --- !u!199 &2943751827735882834
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}

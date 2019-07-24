@@ -8,9 +8,9 @@ public class AsteroidTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerShield"))
         {
-            Nivel01Manager.NivelManagerInstance.InstanciarPatronAsteroide();
+            Nivel01Manager.Nivel01ManagerInstance.InstanciarPatronAsteroide();
         }
     }
 }

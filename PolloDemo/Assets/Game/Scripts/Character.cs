@@ -19,6 +19,7 @@ public class Character : MonoBehaviour
     public bool Invencible;
     public bool Golpeado;
     public bool Muerto;
+    public bool EnMovimiento;
 
     [Header("Movilidad player")]
     [Tooltip("Rango minimo del movimiento del player en X Y")]
@@ -155,14 +156,14 @@ public class Character : MonoBehaviour
         PlayerAnimator.SetTrigger(s_DeadHash);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Asteroid"))
-        {
-            //    DañoRecibido(other.GetComponent<Asteroid>().ValorDaño);
-            //    GameManager.GameManagerInstance._ExplotionManager.ObtenerExplosionPlayer(LugarExplosion);
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Asteroid"))
+    //    {
+    //        //    DañoRecibido(other.GetComponent<Asteroid>().ValorDaño);
+    //        //    GameManager.GameManagerInstance._ExplotionManager.ObtenerExplosionPlayer(LugarExplosion);
+    //    }
+    //}
 
     public void IniciaParpadeoMaterialDaño()
     {

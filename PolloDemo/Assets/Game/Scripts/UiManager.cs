@@ -24,8 +24,8 @@ public class UiManager : MonoBehaviour
     private GameObject pnlPregunta;
     [SerializeField]
     private Text txtPregunta;
-    [SerializeField]
-    private Text txtTiempo;
+    //[SerializeField]
+    //private Text txtTiempo;
 
     private TipoPregunta preguntalActual;
 
@@ -73,8 +73,8 @@ public class UiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        txtTiempo.text = timer.ToString("F");
+        //timer += Time.deltaTime;
+        //txtTiempo.text = timer.ToString("F");
     }
 
     public void ResetUiManager()
@@ -101,6 +101,9 @@ public class UiManager : MonoBehaviour
 
         preguntalActual = TipoPregunta.ninguna;
         Time.timeScale = 1;
+
+      //RectCrossHairB.anchorMin = new Vector2(1, 0);
+      //RectCrossHairB.anchorMax = new Vector2(1, 0);
     }
 
     public void MostrarPuntosNegativos(int values, Vector3 pos)

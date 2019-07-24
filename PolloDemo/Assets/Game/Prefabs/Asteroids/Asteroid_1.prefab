@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Modelo: {fileID: 2273037498109994576}
-  ReEscalaExplosion: {x: 3, y: 3, z: 3}
+  ReEscalaExplosion: {x: 7, y: 7, z: 7}
   TiempoVidaExplosion: 2
   "ValorDa\xF1o": 20
   ValorEscudo: 80

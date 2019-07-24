@@ -15,8 +15,9 @@ public class AsteroidCollider : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("PlayerShield") || other.gameObject.CompareTag("Player"))
         {
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
             GameManager.GameManagerInstance._ExplotionManager.ObtenerExplosion(asteroid.transform, asteroid.ReEscalaExplosion, asteroid.TiempoVidaExplosion);
+            Destroy(asteroid.gameObject);
         }
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1592263678898858298}
   - component: {fileID: 1594251518019366390}
   - component: {fileID: 7885843042772099446}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ef_ShockWave_01_Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1503896026180661262}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -7, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4599798870053247588}
   m_Father: {fileID: 0}
@@ -4672,7 +4672,7 @@ ParticleSystem:
 --- !u!199 &1594251518019366390
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4756,7 +4756,7 @@ GameObject:
   - component: {fileID: 4599798870053247588}
   - component: {fileID: 4599798870053247586}
   - component: {fileID: 4599798870053247589}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ef_Explosion_Sparks_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4772,7 +4772,7 @@ Transform:
   m_GameObject: {fileID: 4599798870053247591}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 1501353852630211102}
   m_RootOrder: 0
@@ -9469,7 +9469,7 @@ ParticleSystem:
 --- !u!199 &4599798870053247589
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
