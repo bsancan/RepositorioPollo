@@ -95,7 +95,7 @@ public class NaveEnemigaManager : MonoBehaviour
 
         ship02.SetActive(true);
         //ship02Trans.position = transform.position + posNavesEnemigasPatron02[Random.Range(0, 5)] + CharacterManager.CharacterManagerInstance._Character.transform.localPosition;
-        ship02Trans.localPosition = posNavesEnemigasPatron02[Random.Range(0, 5)] + CharacterManager.CharacterManagerInstance._Character.transform.localPosition;
+        ship02Trans.localPosition = posNavesEnemigasPatron02[Random.Range(0, 5)];
 
         por.SetActive(true);
         //porTrans.position = ship02Trans.localPosition;
@@ -110,7 +110,7 @@ public class NaveEnemigaManager : MonoBehaviour
         nec.TiempoDisSigLaser = ne02TiempoDisSigLaser;
         nec.IniciarMovimiento();
 
-        ship02Trans.SetParent(null);
+        //ship02Trans.SetParent(null);
         //porTrans.SetParent(null);
         //enemyShip02Queue.Enqueue(ship02);
 

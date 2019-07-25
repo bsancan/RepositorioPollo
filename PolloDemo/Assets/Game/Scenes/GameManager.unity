@@ -428,7 +428,7 @@ MonoBehaviour:
   e_Nivel01: Nivel01
   e_Nivel02: Nivel02
   CargarEscena: 1
-  CodigoEscena: Nivel01
+  CodigoEscena: Nivel02
 --- !u!4 &1862917181
 Transform:
   m_ObjectHideFlags: 0

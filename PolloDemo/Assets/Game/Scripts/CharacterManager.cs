@@ -197,7 +197,7 @@ public class CharacterManager : MonoBehaviour
 
         
         transform.position = Nivel02Manager.Nivel02ManagerInstance.TunelRecorrido.position;
-        transform.rotation = Nivel02Manager.Nivel02ManagerInstance.ObtenerNuevaRotacionDelRecorrido();
+        //transform.rotation = Nivel02Manager.Nivel02ManagerInstance.ObtenerNuevaRotacionDelRecorrido();
     }
 
     private void MovimientoCrossHair()
