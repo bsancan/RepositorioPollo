@@ -40,8 +40,8 @@ Material:
     - Vector1_F267A80C: 0.5
     - _CurvaturaX: 0.01
     - _CurvaturaY: 0.01
-    - _DirCurvaturaX: -0.16015506
-    - _DirCurvaturaY: -0.056334935
+    - _DirCurvaturaX: -0.18582723
+    - _DirCurvaturaY: -0.048330028
     m_Colors:
     - Color_827B3562: {r: 1.821861, g: 0, b: 8, a: 1}
     - Vector2_3D6AC0F3: {r: 2, g: 2, b: 0, a: 0}

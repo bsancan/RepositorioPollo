@@ -30,16 +30,16 @@ Material:
     - Vector1_7943862A: 0.01
     - Vector1_7A2C278E: 0.3
     - Vector1_8BD42FA: 2
-    - Vector1_AEBE041B: 7
+    - Vector1_AEBE041B: 1
     - Vector1_F267A80C: 0.8
     - _CurvaturaX: 0.01
     - _CurvaturaY: 0.01
-    - _DirCurvaturaX: -0.16015506
-    - _DirCurvaturaY: -0.056334935
+    - _DirCurvaturaX: -0.18582723
+    - _DirCurvaturaY: -0.048330028
     m_Colors:
-    - Color_827B3562: {r: 0, g: 0.2077302, b: 0.3962264, a: 0}
+    - Color_827B3562: {r: 0, g: 0.31948927, b: 0.37892914, a: 0}
     - Color_BEDF0AF7: {r: 0.103797786, g: 0, b: 0.2830189, a: 0.6156863}
-    - Vector2_3D6AC0F3: {r: 1, g: 3, b: 0, a: 0}
-    - Vector2_6998CF39: {r: 2, g: 1, b: 0, a: 0}
-    - Vector2_8349F759: {r: 2, g: 1, b: 0, a: 0}
-    - Vector2_E9F2100C: {r: -0.5, g: -3, b: 0, a: 0}
+    - Vector2_3D6AC0F3: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_6998CF39: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_8349F759: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_E9F2100C: {r: 1, g: 1, b: 0, a: 0}

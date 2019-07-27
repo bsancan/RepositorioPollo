@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18131784, g: 0.22692974, b: 0.30736542, a: 1}
+  m_IndirectSpecularColor: {r: 0.17212418, g: 0.20595846, b: 0.24550061, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1012,7 +1012,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 796972563}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 15}
+  m_LocalPosition: {x: 0, y: 0, z: 24.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1035960111}
@@ -1041,7 +1041,7 @@ MonoBehaviour:
   ne02NumNavesEnemiga: 0
   "ne02ValorDa\xF1o": 20
   ne02ValorEscudo: 100
-  ne02VelocidadDeFrente: 4
+  ne02VelocidadDeFrente: 6
   ne02VelocidadRotation: 0.01
   ne02TiempoActPosObjetivo: 0.5
   ne02NumMaxLasers: 2

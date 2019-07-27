@@ -430,7 +430,7 @@ MonoBehaviour:
   - {fileID: 1605369269}
   - {fileID: 532482524}
   - {fileID: 451070838}
-  Invencible: 1
+  Invencible: 0
   Golpeado: 0
   Muerto: 0
   EnMovimiento: 0
@@ -443,11 +443,11 @@ MonoBehaviour:
   DistanciaRaycast: 111
   EscudoInicial: 100
   EscudoActual: 0
-  IntervaloParaConsumirEscudo: 1
+  IntervaloParaConsumirEscudo: 10
   EnergiaInicial: 100
   EnergiaActual: 0
   IntervaloParaConsumirEnergia: 1
-  GastoEnergiaPorTiempo: 1
+  GastoEnergiaPorTiempo: 10
 --- !u!65 &157263141
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -764,14 +764,14 @@ Camera:
   m_GameObject: {fileID: 534669902}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 32.96973
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -780,7 +780,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 40
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -806,7 +806,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 3.1554436e-30, y: 4.2964514e-26, z: -1.9312002e-10, w: 1}
-  m_LocalPosition: {x: 2.5866703e-10, y: 0.6697054, z: -10}
+  m_LocalPosition: {x: 4.1031226e-10, y: 1.0623245, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1790033926}
@@ -1850,7 +1850,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168665407}
   serializedVersion: 6
-  lengthInSec: 5
+  lengthInSec: 0.1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -1925,7 +1925,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.57
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1978,7 +1978,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 150
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -2094,7 +2094,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -6652,7 +6652,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 157263139}
   m_Lens:
-    FieldOfView: 40
+    FieldOfView: 60
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -6676,7 +6676,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674957373}
   m_LocalRotation: {x: 3.1554436e-30, y: 4.2964514e-26, z: -1.9312002e-10, w: 1}
-  m_LocalPosition: {x: 2.5866703e-10, y: 0.6697054, z: -10}
+  m_LocalPosition: {x: 4.1031226e-10, y: 1.0623245, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 238162105}

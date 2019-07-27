@@ -26,6 +26,6 @@ Material:
     m_Floats:
     - _Delta: 0.00138
     - _Poseterize: 0
-    - _PosterizationCount: 3
+    - _PosterizationCount: 1
     - _Raw: 0
     m_Colors: []
