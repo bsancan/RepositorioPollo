@@ -165,6 +165,8 @@ public class GameManager : MonoBehaviour
 
     public void ReinicialNivel()
     {
+        print("Empieza Reinicio de nivel (" + ActualNivel + ")");
+        
         AniFade.SetBool(s_Estado, true);
         siguienteNivel = ActualNivel;
     }
@@ -254,20 +256,22 @@ public class GameManager : MonoBehaviour
 
     void CargarNivelManualmente()
     {
-        AniFade.gameObject.SetActive(false);
+        //AniFade.gameObject.SetActive(false);
         if (siguienteNivel == e_Nivel01)
         {
             //NivelActual = 1;
+            AniFade.SetTrigger(s_Inicio);
             ActualNivel = e_Nivel01;
             _UiManager.gameObject.SetActive(true);
             _UiManager.IngresarPuntaje(0);
-            CharacterManager.CharacterManagerInstance._Character.EnMovimiento = true;
-
+ 
+            //CharacterManager.CharacterManagerInstance._Character.EnMovimiento = true;
             //CharacterManager.CharacterManagerInstance._Character.IniciarConsumoEnergia();
             //AniFade.SetBool(s_Estado, false);
         }else if (siguienteNivel == e_Nivel02)
         {
             //NivelActual = 1;
+            AniFade.SetTrigger(s_Inicio);
             ActualNivel = e_Nivel02;
             _UiManager.gameObject.SetActive(true);
             _UiManager.IngresarPuntaje(0);
@@ -279,6 +283,7 @@ public class GameManager : MonoBehaviour
         else if (siguienteNivel == e_Tutorial)
         {
             //NivelActual = 1;
+            AniFade.SetTrigger(s_Inicio);
             _UiManager.gameObject.SetActive(true);
             _UiManager.IngresarPuntaje(0);
             //CharacterManager.CharacterManagerInstance._Character.IniciarConsumoEnergia();

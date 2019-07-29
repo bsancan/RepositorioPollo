@@ -73,6 +73,12 @@ public class Character : MonoBehaviour
     void Start()
     {
         ResetCharacter();
+
+        if (GameManager.GameManagerInstance.CargarEscena)
+        {
+            EnMovimiento = true;
+            IniciarConsumoEnergia();
+        }
     }
 
     // Update is called once per frame
@@ -83,21 +89,29 @@ public class Character : MonoBehaviour
 
     public void ResetCharacter()
     {
+
         transform.position = Vector3.zero;
         EscudoActual = EscudoInicial;
         EnergiaActual = EnergiaInicial;
+
+        Muerto = false;
+        Golpeado = false;
+
         if (ienEnergia != null)
             StopCoroutine(ienEnergia);
         else
             ienEnergia = IenConsumoEnergia();
-        
+        print("Reseteo de character");
     }
 
 
     public void DañoRecibido(int daño)
     {
-       
+        if (Muerto)
+            return;
+
         GameManager.GameManagerInstance._ExplotionManager.ObtenerExplosionPlayer(LugarExplosion);
+
         if (Invencible)
             return;
 
@@ -153,6 +167,8 @@ public class Character : MonoBehaviour
 
     public void AnimacionDeMuerte()
     {
+        Muerto = true;
+        StopCoroutine(ienEnergia);
         PlayerAnimator.SetTrigger(s_DeadHash);
     }
 
@@ -207,6 +223,7 @@ public class Character : MonoBehaviour
 
     IEnumerator IenConsumoEnergia()
     {
+        print("Inicio consumo energia");
         while (EnergiaActual > 0)
         {
             yield return new WaitForSeconds(IntervaloParaConsumirEnergia);

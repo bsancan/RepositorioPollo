@@ -16,7 +16,7 @@ public class FadeEvents : MonoBehaviour
         }
         else
         {
-
+            GameManager.GameManagerInstance.CargarEscenaAsync();
         }
 
     }

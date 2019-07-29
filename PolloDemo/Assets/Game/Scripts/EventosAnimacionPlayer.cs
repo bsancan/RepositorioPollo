@@ -12,4 +12,9 @@ public class EventosAnimacionPlayer : MonoBehaviour
     {
         CharacterManager.CharacterManagerInstance._Character.FinalizaParpadeoMaterialDaño();
     }
+
+    public void GameOver() 
+    {
+        GameManager.GameManagerInstance.ReinicialNivel();
+    }
 }

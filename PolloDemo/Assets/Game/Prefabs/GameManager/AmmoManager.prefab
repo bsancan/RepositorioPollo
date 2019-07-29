@@ -45,8 +45,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerAmmoPrefab: {fileID: 6614534131263243726, guid: 2ff84e90c2a364f428ead324019cd17f,
     type: 3}
-  VelocidadPlayerAmmo: 500
+  VelocidadPlayerAmmo: 110
   VelocidadFuego: 0.1
-  TiempoVidaPlayerAmmo: 0.27
+  TiempoVidaPlayerAmmo: 0.9
   "ValorDa\xF1oPlayerAmmo": 10
   "Tama\xF1oPiscinaPlayerAmmo": 11
+  EnemyAmmoPrefab: {fileID: 6614534131263243726, guid: 968454921b787b643b29fceb00c6c3b9,
+    type: 3}
+  VelocidadEnemyAmmo: 60
+  TiempoVidaEnemyAmmo: 1
+  "ValorDa\xF1oEnemyAmmo": 10
+  "Tama\xF1oPiscinaEnemyAmmo": 20
